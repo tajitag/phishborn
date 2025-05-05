@@ -9,9 +9,9 @@ MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\0
 NC='\033[0m' 
 
 
-echo -e "${BLUE}"
-sleep 1
-echo -e "            PhishBorn${NC} by tajitag"
+echo -e 
+sleep 0.5
+echo -e "${ORANGE}[${NC}-${ORANGE}]${NC}PhishBorn by tajitag"
 echo ""
 
 
@@ -27,7 +27,7 @@ if [ ${#folders[@]} -eq 0 ]; then
   exit 1
 fi
 
-sleep 1
+
 echo -e "${ORANGE}[${NC}-${ORANGE}]${NC} ${GREEN}起動するサイトを選んでください：${NC}"
 for i in "${!folders[@]}"; do
   echo -e "${ORANGE}[${NC}${YELLOW}$((i+1))${NC}${ORANGE}]${NC} ${folders[$i]}"
