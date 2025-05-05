@@ -48,10 +48,43 @@ sudo apt install cloudflared
 
 ---
 
-## 注意
 
-このツールは**教育目的のみに使用**してください。第三者の情報を不正に取得・利用する行為は禁止されています。
-仮想サーバーを使う場合は悪用しないということを制作者に伝えてかつ許可を得たときのみ。
+
+# PhishBorn（Educational Edition）
+
+## 【重要：このツールは教育・研究目的以外での使用を禁止します】
+
+本ツールは**フィッシングの手法を理解し、セキュリティ対策を学ぶことを目的**としています。  
+以下のような目的・使用を固く禁じます：
+
+- 実在するサイトの模倣
+- 他人のIDやパスワードを収集する目的での使用
+- インターネット上での公開・拡散
+- GitHub以外の場所への無断転載
+
+**このツールはローカル環境（localhost）以外での使用を想定していません。**
+
+---
+
+## 【合法的な使用例】
+
+- セキュリティ教育の講義における模擬攻撃デモ
+- 自己学習のためのWebセキュリティ演習
+- CTFやハニーポット構築のための検証目的
+
+---
+
+## 【免責事項（Disclaimer）】
+
+本ソフトウェアは「現状のまま」提供されます。  
+**このツールの使用によって生じた損害・犯罪行為には、開発者は一切責任を負いません。**
+
+---
+
+## This tool is for **educational and ethical hacking training purposes only.**  
+Any form of unauthorized phishing, credential harvesting, or online deployment is strictly prohibited.
+
+**Use only in a local environment. Never upload or use this tool on live websites or networks.**
 
 ---
 
