@@ -1,6 +1,6 @@
 # PhishBorn - サイト起動マネージャー
 
-PhishBornは、ローカルおよび仮想サーバー（Cloudflared）を使用してPHPベースのサイトを素早く起動し、ログイン情報などのPOSTデータを監視できるツールです。**教育目的専用**です。
+PhishBornは、ローカルおよび仮想サーバーを使用してPHPベースのサイトを素早く起動し、ログイン情報などのPOSTデータを監視できるツールです。**教育目的専用**です。
 
 ---
 
@@ -13,17 +13,17 @@ PhishBornは、ローカルおよび仮想サーバー（Cloudflared）を使用
 
 ---
 
-## インストール
+## 使い方
 
 ```bash
 git clone https://github.com/tajitag/phishborn.git
+```
+```bash
 cd phishborn
+```
+```bash
 chmod +x born.sh
 ```
-
-
-## 使い方
-
 ```bash
 ./born.sh
 ```
@@ -51,6 +51,7 @@ sudo apt install cloudflared
 ## 注意
 
 このツールは**教育目的のみに使用**してください。第三者の情報を不正に取得・利用する行為は禁止されています。
+仮想サーバーを使う場合は悪用しないということを制作者に伝えてかつ許可を得たときのみ。
 
 ---
 
