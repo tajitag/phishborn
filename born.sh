@@ -8,10 +8,11 @@ RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033
 MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')" BLACK="$(printf '\033[30m')"
 NC='\033[0m' 
 
+clear
 
 echo -e 
 sleep 0.5
-echo -e "${ORANGE}[${NC}-${ORANGE}]${NC}PhishBorn by tajitag"
+echo -e "     ${ORANGE}[${NC}-${ORANGE}]${NC}PhishBorn by tajitag"
 echo ""
 
 
@@ -26,6 +27,7 @@ if [ ${#folders[@]} -eq 0 ]; then
   echo -e "${RED}エラー：index.php を含むフォルダが見つかりません${NC}"
   exit 1
 fi
+
 
 
 echo -e "${ORANGE}[${NC}-${ORANGE}]${NC} ${GREEN}起動するサイトを選んでください：${NC}"
@@ -52,7 +54,8 @@ clear
   echo ""
   echo -e "${ORANGE}[${NC}-${ORANGE}]${NC} 公開方法を選んでください："
   echo -e "${ORANGE}[${NC}1${ORANGE}]${NC} ローカルホスト（http://localhost:8000）"
-  echo -e "${ORANGE}[${NC}2${ORANGE}]${NC} Cloudflared使用"
+ ## 以下の行のコードは悪用しないことを認めてかつDiscord上で制作者に許可をもらったときのみコメントアウトを解除してしようしてください。
+ ## echo -e "${ORANGE}[${NC}2${ORANGE}]${NC} Cloudflared使用"
 
   echo ""
   read -p "番号を入力 >>> " method
