@@ -59,12 +59,5 @@ sudo apt install cloudflared
 
 tajitag
 
-**PhishBorn**
-
-PhishBorn by tajitag
-
 ---
 
-## ライセンス
-
-MIT License
