@@ -61,7 +61,7 @@ sudo apt install cloudflared
 - インターネット上での公開・拡散
 - GitHub以外の場所への無断転載
 
-**このツールはローカル環境（localhost）以外での使用を想定していません。**
+
 
 ---
 
