@@ -18,14 +18,14 @@ PhishBornは、ローカルおよび仮想サーバー（Cloudflared）を使用
 ```bash
 git clone https://github.com/tajitag/phishborn.git
 cd phishborn
-chmod +x run.sh
+chmod +x born.sh
 ```
 
 
 ## 使い方
 
 ```bash
-./run.sh
+./born.sh
 ```
 
 1. サイト一覧から対象を選ぶ

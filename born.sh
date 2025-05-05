@@ -6,12 +6,12 @@ site_dir="site"
 
 RED="$(printf '\033[31m')"  GREEN="$(printf '\033[32m')"  ORANGE="$(printf '\033[33m')"  BLUE="$(printf '\033[34m')"
 MAGENTA="$(printf '\033[35m')"  CYAN="$(printf '\033[36m')"  WHITE="$(printf '\033[37m')" BLACK="$(printf '\033[30m')"
-NC='\033[0m' # 色をリセット
+NC='\033[0m' 
 
-# ヘッダー
+
 echo -e "${BLUE}"
 sleep 1
-echo -e "         PhishBorn${NC} by tajitag"
+echo -e "            PhishBorn${NC} by tajitag"
 echo ""
 
 
