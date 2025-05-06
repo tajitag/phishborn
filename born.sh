@@ -71,7 +71,7 @@ clear
     tail -f log.txt
     kill $server_pid
 
-    elif [[ "$method" == "2" ]]; then
+   ## elif [[ "$method" == "2" ]]; then
     if ! command -v cloudflared > /dev/null; then
       echo -e "${RED}Cloudflared が見つかりません。インストールしてください。${NC}"
       exit 1
